@@ -14,5 +14,5 @@ func Check(e error) {
 
 // Prints to stderr
 func errorLog(e ...interface{}) {
-	log.New(os.Stderr, "", 0).Println(e)
+	log.New(os.Stderr, "", 0).Printf("%+v",e)
 }
