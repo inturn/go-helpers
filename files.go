@@ -40,25 +40,10 @@ func Md5File(path string) (string, error) {
 }
 
 // MD5 hash of provided []bytes
-func Md5Bytes(data []bytes) (string, error) {
-	//Initialize variable returnMD5String now in case an error has to be returned
-	var returnMD5String string
-
-	//Open a new hash interface to write to
+func Md5Bytes(data []byte) (string) {
 	hash := md5.New()
-
-	//Copy the bytes in the hash interface and check for any error
-	if _, err := io.Copy(hash, data); err != nil {
-		return returnMD5String, err
-	}
-
-	//Get the 16 bytes hash
-	hashInBytes := hash.Sum(nil)[:16]
-
-	//Convert the bytes to a string
-	returnMD5String = hex.EncodeToString(hashInBytes)
-
-	return returnMD5String, err
+	hash.Write(data)
+	return hex.EncodeToString(hash.Sum(nil))
 }
 
 
