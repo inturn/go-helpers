@@ -47,7 +47,7 @@ func Md5Bytes(data []bytes) (string, error) {
 	//Open a new hash interface to write to
 	hash := md5.New()
 
-	//Copy the file in the hash interface and check for any error
+	//Copy the bytes in the hash interface and check for any error
 	if _, err := io.Copy(hash, data); err != nil {
 		return returnMD5String, err
 	}
